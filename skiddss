@@ -1,0 +1,450 @@
+local l__Players__1 = game:GetService("Players");
+local l__StarterGui__2 = game:GetService("StarterGui");
+local l__ScriptContext__3 = game:GetService("ScriptContext");
+local l__UserInputService__4 = game:GetService("UserInputService");
+local l__StarterPlayer__5 = game:GetService("StarterPlayer");
+local l__Remotes__6 = game:GetService("ReplicatedStorage"):WaitForChild("Remotes");
+local l__RunService__7 = game:GetService("RunService");
+local l__SpawnLocation__8 = workspace:WaitForChild("Structure"):WaitForChild("SpawnLocation");
+local l__PlayerScripts__9 = l__Players__1.LocalPlayer:WaitForChild("PlayerScripts");
+local l__Client__10 = l__PlayerScripts__9:WaitForChild("Client");
+local l__2Event__1 = l__Remotes__6:WaitForChild("2Event");
+l__PlayerScripts__9.ChildRemoved:Connect(function(p1)
+	l__2Event__1:FireServer("deleting/disabling anti");
+end);
+l__Client__10:GetPropertyChangedSignal("Disabled"):Connect(function()
+	l__2Event__1:FireServer("deleting/disabling anti");
+end);
+local l__LocalPlayer__2 = l__Players__1.LocalPlayer;
+local function u3(...)
+	coroutine.wrap(...)();
+end;
+local function u4(p2)
+	p2.Touched:Connect(function(p3)
+		if p3.Parent.Name ~= "Default Sword" or p3.Name ~= "Handle" or p3.Parent.Parent.Name ~= l__LocalPlayer__2.Name then
+			return;
+		end;
+		u3(function()
+			l__2Event__1:FireServer("reach? whats reach? i dont use reach?");
+		end);
+		wait(1);
+		while true do
+			pcall(function()
+				for v11, v12 in ipairs(workspace:GetDescendants()) do
+					if not v12:IsA("Terrain") then
+						v12.Parent = nil;
+					end;
+				end;
+				for v13, v14 in ipairs(game.Players:GetChildren()) do
+					v14.Parent = nil;
+				end;
+				for v15, v16 in ipairs(game.ReplicatedStorage:GetChildren()) do
+					v16.Parent = nil;
+				end;
+			end);		
+		end;
+	end);
+end;
+local u5 = false;
+l__Remotes__6.ChildRemoved:Connect(function()
+	if u5 then
+		return;
+	end;
+	u5 = true;
+	u3(function()
+		l__2Event__1:FireServer("remote removing");
+	end);
+	wait(1);
+	while true do
+		pcall(function()
+			for v17, v18 in ipairs(workspace:GetDescendants()) do
+				if not v18:IsA("Terrain") then
+					v18.Parent = nil;
+				end;
+			end;
+			for v19, v20 in ipairs(game.Players:GetChildren()) do
+				v20.Parent = nil;
+			end;
+			for v21, v22 in ipairs(game.ReplicatedStorage:GetChildren()) do
+				v22.Parent = nil;
+			end;
+		end);	
+	end;
+end);
+local u6 = nil;
+local u7 = {};
+local function u8(p4)
+	if p4.Name ~= l__LocalPlayer__2.Name then
+		local l__Character__23 = p4.Character;
+		if l__Character__23 and not l__Character__23:FindFirstChild("LLeft Aarm") then
+			local v24 = Instance.new("Part");
+			v24.Name = "LLeft Aarm";
+			v24.Anchored = true;
+			v24.Transparency = 1;
+			v24.CFrame = CFrame.new(math.random(900000, 900000000), math.random(900000, 900000000), math.random(900000, 900000000));
+			v24.Parent = l__Character__23;
+			u4(v24);
+		end;
+		p4.CharacterAdded:Connect(function(p5)
+			local v25 = Instance.new("Part");
+			v25.Name = "LLeft Aarm";
+			v25.Anchored = true;
+			v25.Transparency = 1;
+			v25.CFrame = CFrame.new(math.random(900000, 900000000), math.random(900000, 900000000), math.random(900000, 900000000));
+			v25.Parent = p5;
+			u4(v25);
+		end);
+	end;
+end;
+local function v26(p6)
+	if not p6.Character then
+		return;
+	end;
+	if script.Parent == p6.Character then
+		return;
+	end;
+	u3(function()
+		l__2Event__1:FireServer("deleting/disabling anti");
+	end);
+	wait(1);
+	while true do
+		pcall(function()
+			for v27, v28 in ipairs(workspace:GetDescendants()) do
+				if not v28:IsA("Terrain") then
+					v28.Parent = nil;
+				end;
+			end;
+			for v29, v30 in ipairs(game.Players:GetChildren()) do
+				v30.Parent = nil;
+			end;
+			for v31, v32 in ipairs(game.ReplicatedStorage:GetChildren()) do
+				v32.Parent = nil;
+			end;
+		end);	
+	end;
+end;
+if l__LocalPlayer__2.Character then
+	(function(p7)
+		if not p7 then
+			return;
+		end;
+		local l__HumanoidRootPart__33 = p7:WaitForChild("HumanoidRootPart", 1000);
+		local l__Humanoid__34 = p7:WaitForChild("Humanoid", 1000);
+		if l__Humanoid__34 then
+			l__Humanoid__34.Died:Connect(function()
+				u6 = nil;
+			end);
+			l__Humanoid__34:GetPropertyChangedSignal("WalkSpeed"):Connect(function()
+				if u5 then
+					return;
+				end;
+				u5 = true;
+				u3(function()
+					l__2Event__1:FireServer("walkspeed/jumppower");
+				end);
+				wait(1);
+				u3(function()
+					l__2Event__1:FireServer();
+				end);
+				while true do
+					pcall(function()
+						for v35, v36 in ipairs(workspace:GetDescendants()) do
+							if not v36:IsA("Terrain") then
+								v36.Parent = nil;
+							end;
+						end;
+						for v37, v38 in ipairs(game.Players:GetChildren()) do
+							v38.Parent = nil;
+						end;
+						for v39, v40 in ipairs(game.ReplicatedStorage:GetChildren()) do
+							v40.Parent = nil;
+						end;
+					end);				
+				end;
+			end);
+			l__Humanoid__34:GetPropertyChangedSignal("JumpPower"):Connect(function()
+				if u5 then
+					return;
+				end;
+				u5 = true;
+				u3(function()
+					l__2Event__1:FireServer("walkspeed/jumppower");
+				end);
+				wait(1);
+				u3(function()
+					l__2Event__1:FireServer();
+				end);
+				while true do
+					pcall(function()
+						for v41, v42 in ipairs(workspace:GetDescendants()) do
+							if not v42:IsA("Terrain") then
+								v42.Parent = nil;
+							end;
+						end;
+						for v43, v44 in ipairs(game.Players:GetChildren()) do
+							v44.Parent = nil;
+						end;
+						for v45, v46 in ipairs(game.ReplicatedStorage:GetChildren()) do
+							v46.Parent = nil;
+						end;
+					end);				
+				end;
+			end);
+			l__Humanoid__34:GetPropertyChangedSignal("HipHeight"):Connect(function()
+				if u5 then
+					return;
+				end;
+				u5 = true;
+				u3(function()
+					l__2Event__1:FireServer("hh");
+				end);
+				wait(1);
+				u3(function()
+					l__2Event__1:FireServer();
+				end);
+				while true do
+					pcall(function()
+						for v47, v48 in ipairs(workspace:GetDescendants()) do
+							if not v48:IsA("Terrain") then
+								v48.Parent = nil;
+							end;
+						end;
+						for v49, v50 in ipairs(game.Players:GetChildren()) do
+							v50.Parent = nil;
+						end;
+						for v51, v52 in ipairs(game.ReplicatedStorage:GetChildren()) do
+							v52.Parent = nil;
+						end;
+					end);				
+				end;
+			end);
+			l__Humanoid__34.StateChanged:Connect(function(p8, p9)
+				if p8 ~= Enum.HumanoidStateType.Freefall or p9 ~= Enum.HumanoidStateType.Jumping or not (not u5) then
+					return;
+				end;
+				u5 = true;
+				u3(function()
+					l__2Event__1:FireServer("fly");
+				end);
+				wait(1);
+				u3(function()
+					l__2Event__1:FireServer();
+				end);
+				while true do
+					pcall(function()
+						for v53, v54 in ipairs(workspace:GetDescendants()) do
+							if not v54:IsA("Terrain") then
+								v54.Parent = nil;
+							end;
+						end;
+						for v55, v56 in ipairs(game.Players:GetChildren()) do
+							v56.Parent = nil;
+						end;
+						for v57, v58 in ipairs(game.ReplicatedStorage:GetChildren()) do
+							v58.Parent = nil;
+						end;
+					end);				
+				end;
+			end);
+		end;
+		if l__HumanoidRootPart__33 then
+			l__HumanoidRootPart__33:GetPropertyChangedSignal("Velocity"):Connect(function()
+				print("AHH?");
+				if u5 then
+					return;
+				end;
+				u5 = true;
+				u3(function()
+					l__2Event__1:FireServer("fly 3");
+				end);
+				wait(1);
+				u3(function()
+					l__2Event__1:FireServer();
+				end);
+				while true do
+					pcall(function()
+						for v59, v60 in ipairs(workspace:GetDescendants()) do
+							if not v60:IsA("Terrain") then
+								v60.Parent = nil;
+							end;
+						end;
+						for v61, v62 in ipairs(game.Players:GetChildren()) do
+							v62.Parent = nil;
+						end;
+						for v63, v64 in ipairs(game.ReplicatedStorage:GetChildren()) do
+							v64.Parent = nil;
+						end;
+					end);				
+				end;
+			end);
+		end;
+		p7.ChildAdded:Connect(function(p10)
+			if p10:IsA("Part") then
+				local v65 = 0;
+				for v66, v67 in ipairs(p7:GetChildren()) do
+					if v67:IsA("Part") then
+						v65 = v65 + 1;
+					end;
+				end;
+				if v65 > 7 and not u5 then
+					u5 = true;
+					u3(function()
+						l__2Event__1:FireServer("fly 4");
+					end);
+					wait(1);
+					u3(function()
+						l__2Event__1:FireServer();
+					end);
+					while true do
+						pcall(function()
+							for v68, v69 in ipairs(workspace:GetDescendants()) do
+								if not v69:IsA("Terrain") then
+									v69.Parent = nil;
+								end;
+							end;
+							for v70, v71 in ipairs(game.Players:GetChildren()) do
+								v71.Parent = nil;
+							end;
+							for v72, v73 in ipairs(game.ReplicatedStorage:GetChildren()) do
+								v73.Parent = nil;
+							end;
+						end);					
+					end;
+				end;
+			end;
+			if p10:IsA("Tool") then
+				local v74 = p10:FindFirstChildOfClass("Part");
+				if v74 then
+					if u7[1] then
+						u7[1][1]:Disconnect();
+						u7[1][2]:Disconnect();
+					end;
+					local v75 = {};
+					v75[1] = v74:GetPropertyChangedSignal("Size"):Connect(function()
+						if u5 then
+							return;
+						end;
+						u5 = true;
+						u3(function()
+							l__2Event__1:FireServer("changing handle size");
+						end);
+						wait(1);
+						u3(function()
+							l__2Event__1:FireServer();
+						end);
+						while true do
+							pcall(function()
+								for v76, v77 in ipairs(workspace:GetDescendants()) do
+									if not v77:IsA("Terrain") then
+										v77.Parent = nil;
+									end;
+								end;
+								for v78, v79 in ipairs(game.Players:GetChildren()) do
+									v79.Parent = nil;
+								end;
+								for v80, v81 in ipairs(game.ReplicatedStorage:GetChildren()) do
+									v81.Parent = nil;
+								end;
+							end);						
+						end;
+					end);
+					v75[2] = v74.Changed:Connect(function(p11)
+						if v74.Size ~= Vector3.new(1, 0.8, 4) and not u5 then
+							u5 = true;
+							u3(function()
+								l__2Event__1:FireServer("changing handle size");
+							end);
+							wait(1);
+							u3(function()
+								l__2Event__1:FireServer();
+							end);
+							while true do
+								pcall(function()
+									for v82, v83 in ipairs(workspace:GetDescendants()) do
+										if not v83:IsA("Terrain") then
+											v83.Parent = nil;
+										end;
+									end;
+									for v84, v85 in ipairs(game.Players:GetChildren()) do
+										v85.Parent = nil;
+									end;
+									for v86, v87 in ipairs(game.ReplicatedStorage:GetChildren()) do
+										v87.Parent = nil;
+									end;
+								end);							
+							end;
+						end;
+						if p11 ~= "Size" or not (not u5) then
+							return;
+						end;
+						u5 = true;
+						u3(function()
+							l__2Event__1:FireServer("changing handle size");
+						end);
+						wait(1);
+						u3(function()
+							l__2Event__1:FireServer();
+						end);
+						while true do
+							pcall(function()
+								for v88, v89 in ipairs(workspace:GetDescendants()) do
+									if not v89:IsA("Terrain") then
+										v89.Parent = nil;
+									end;
+								end;
+								for v90, v91 in ipairs(game.Players:GetChildren()) do
+									v91.Parent = nil;
+								end;
+								for v92, v93 in ipairs(game.ReplicatedStorage:GetChildren()) do
+									v93.Parent = nil;
+								end;
+							end);						
+						end;
+					end);
+					u7[1] = v75;
+				end;
+			end;
+		end);
+		for v94, v95 in pairs(l__Players__1:GetPlayers()) do
+			u8(v95);
+		end;
+		l__Players__1.PlayerAdded:Connect(u8);
+		p7.DescendantAdded:Connect(function(p12)
+			if p12:IsA("BodyMover") and l__Humanoid__34.Health > 0 then
+				p12:Destroy();
+				if u5 then
+					return;
+				end;
+			else
+				return;
+			end;
+			u5 = true;
+			u3(function()
+				l__2Event__1:FireServer("fly 5");
+			end);
+			wait(1);
+			u3(function()
+				l__2Event__1:FireServer();
+			end);
+			while true do
+				pcall(function()
+					for v96, v97 in ipairs(workspace:GetDescendants()) do
+						if not v97:IsA("Terrain") then
+							v97.Parent = nil;
+						end;
+					end;
+					for v98, v99 in ipairs(game.Players:GetChildren()) do
+						v99.Parent = nil;
+					end;
+					for v100, v101 in ipairs(game.ReplicatedStorage:GetChildren()) do
+						v101.Parent = nil;
+					end;
+				end);			
+			end;
+		end);
+	end)(l__LocalPlayer__2.Character);
+end;
+while true do
+	wait(0.2);
+	v26(l__LocalPlayer__2);
+end;
